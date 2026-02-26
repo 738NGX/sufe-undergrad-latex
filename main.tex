@@ -1,35 +1,22 @@
-% ==========================================
-% 1. 论文元信息
-% ==========================================
 \documentclass[fontset=none, UTF8]{ctexart}
-\def\MYTITLEA{请输入你的论文标题}
-\def\MYTITLEB{如果太长了可以换行}
-\def\MYNAME{738NGX}
-\def\MYID{2022114514}
-\def\MYCOLLEGE{计算机与人工智能学院}
-\def\MYMAJOR{计算机科学与技术}
-\def\MYADVISOR{天王寺璃奈}
-\def\MYDATE{ \quad 年  \quad \quad 月}
 % ==========================================
-% 1. 基础宏包与数学支持
+% 1. 基础宏包
 % ==========================================
 \usepackage{amsmath, amsfonts, amssymb}
 \usepackage{graphicx}
 \usepackage{xstring}
-\usepackage{amssymb} % 用于实现 \checkmark 钩号
-
-% 备份原始命令
-\let\oldincludegraphics\includegraphics
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{pdfpages}
+\usepackage{setspace}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
 
 % 重定义 \includegraphics 以自动剥离 .png 后缀，如不需要可以注释或删除
-\renewcommand{\includegraphics}[2][]{%
-    \IfEndWith{#2}{.png}{%
-        \StrBefore{#2}{.png}[\filename]% 如果以 .png 结尾，截取前面部分
-        \oldincludegraphics[#1]{\filename}%
-    }{%
-        \oldincludegraphics[#1]{#2}% 如果不是，按原样处理
-    }%
-}
+\let\oldincludegraphics\includegraphics % 备份原始命令
+\renewcommand{\includegraphics}[2][]{\IfEndWith{#2}{.png}{\StrBefore{#2}{.png}[\filename]\oldincludegraphics[#1]{\filename}}{\oldincludegraphics[#1]{#2}}}
 
 % 适配某些版本的pandoc转换可能导致的错误
 \makeatletter
@@ -44,16 +31,6 @@
 }
 \makeatother
 
-% 确保 PDF 优先级最高
-\DeclareGraphicsExtensions{.pdf,.png,.jpg}
-\usepackage{float}
-\usepackage{pdfpages}
-\usepackage{setspace}
-\usepackage{microtype}
-\usepackage{booktabs}   % 常用表格线宏包
-\usepackage{longtable}  % 支持跨页长表格
-\usepackage{array}      % 增强表格功能
-
 % ==========================================
 % 2. 字体与中文设置
 % ==========================================
@@ -61,11 +38,11 @@
 
 % 基础字体设置
 \setmainfont{Times New Roman}
-\setCJKmainfont{SIMSUN.TTC}[AutoFakeBold=2.5]
+\setCJKmainfont{SIMSUN.TTC}[AutoFakeBold=2.5, AutoFakeSlant=0.2]
 \setsansfont{Arial}
-\setCJKsansfont{SIMHEI.TTF}[AutoFakeBold=2.5]
+\setCJKsansfont{SIMHEI.TTF}[AutoFakeBold=2.5, AutoFakeSlant=0.2]
 \setCJKmonofont{SIMHEI.TTF}
-\setCJKfamilyfont{zhkai}{SIMKAI.TTF}[AutoFakeBold=2.5]
+\setCJKfamilyfont{zhkai}{SIMKAI.TTF}[AutoFakeBold=2.5, AutoFakeSlant=0.2]
 \newcommand{\kaishu}{\CJKfamily{zhkai}}
 
 % ==========================================
@@ -99,7 +76,7 @@
 \usepackage{caption}
 \usepackage{chngcntr}
 
-% 图号格式：图 3-1
+% 图号格式：图 1-1
 \counterwithin{figure}{section}
 \renewcommand{\thefigure}{\thesection--\arabic{figure}}
 \renewcommand{\figurename}{图}
@@ -109,8 +86,6 @@
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \makeatother
 \setkeys{Gin}{width=\maxwidth, height=0.3\textheight, keepaspectratio}
-
-\DeclareGraphicsRule{.png}{pdf}{.pdf}{} % 优先加载同名 pdf
 \floatplacement{figure}{H}              % 强制 H 选项
 
 % 自定义图表名格式
@@ -205,32 +180,12 @@
 % 1. 导入封面
 %\includepdf[pages={1,2}]{cover.pdf}
 \input{cover}
-
-% 2. 摘要页初始化
 \restoregeometry 
-\newpage
-\pagestyle{plain} 
-\pagenumbering{Roman} 
-\setcounter{page}{1}
-
-\input{abstract-cn}
-\newpage
-\input{abstract-en}
-
-\newpage
-\tableofcontents 
-
-\newpage
-\pagenumbering{arabic} 
-\setcounter{page}{1}
-
-\begin{spacing}{1.5}
-
+\clearpage
+% 2. 导入摘要和正文
 \input{content}
-
-\end{spacing}
-
-\newpage
-\printbibliography[heading=bibintoc, title={参考文献}]
+% 3. 附录
+\clearpage
+\input{appendix}
 
 \end{document}

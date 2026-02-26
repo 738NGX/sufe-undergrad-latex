@@ -1,3 +1,42 @@
+% --- 摘要页初始化 ---
+\pagestyle{plain} 
+\pagenumbering{Roman} 
+\setcounter{page}{1}
+
+% --- 中文摘要 ---
+\addcontentsline{toc}{section}{\texorpdfstring{摘\quad 要}{摘要}}
+\begin{center}{\zihao{3}\sffamily 请输入论文的中文标题，将在摘要页面展示} \end{center}
+\vspace{2em}
+\begin{center}{\zihao{3}\sffamily 摘\quad 要}\end{center}
+\vspace{1em}
+\begin{spacing}{2.5}{\zihao{4} 这里写入你的中文摘要内容。}\end{spacing}
+\vspace{2em}
+\noindent {\zihao{4}\sffamily 关键词：}{\zihao{4} 关键词A; 关键词B;
+关键词C}
+
+\clearpage
+
+% --- 英文摘要 ---
+\addcontentsline{toc}{section}{Abstract}
+\begin{center}{\zihao{3}\sffamily Please input the English
+title}\end{center}
+\vspace{1.5em}\begin{center}{\zihao{3}\sffamily Abstract}\end{center}
+\vspace{1em}
+\begin{spacing}{1}{\zihao{5}\sffamily Enter your English abstract
+here.}\end{spacing}
+\vspace{2em}
+\noindent {\zihao{5}\sffamily\bfseries Key words: }{\zihao{5}\sffamily Keyword
+A; Keyword B; Keyword C}
+
+% --- 目录 ---
+\clearpage
+\tableofcontents 
+
+% --- 正文 ---
+\clearpage
+\pagenumbering{arabic} 
+\setcounter{page}{1}
+\begin{spacing}{1.5}
 \section{正文一级标题}
 
 \subsection{正文二级标题}
@@ -73,3 +112,8 @@ MyGO!!!!! & 主唱 & 主音吉他 & 节奏吉他 & 贝斯 & 鼓手 \\
 \end{longtable}
 
 这是一段引用了参考文献的正文文本\autocite{yuJapaneseAnimeIdol2021}。参考文献的角标具体样式可以自行调整。参考文献会在文末一并列出。
+\end{spacing}
+
+% --- 参考文献 ---
+\clearpage
+\printbibliography[heading=bibintoc, title={参考文献}]

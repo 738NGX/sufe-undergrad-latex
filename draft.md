@@ -1,3 +1,14 @@
+---
+title: "请输入论文的中文标题，将在摘要页面展示"
+en_title: "Please input the English title"
+cn_abstract: |
+  这里写入你的中文摘要内容。
+cn_keywords: 关键词A; 关键词B; 关键词C
+en_abstract: |
+  Enter your English abstract here.
+en_keywords: Keyword A; Keyword B; Keyword C
+---
+
 # 正文一级标题
 
 ## 正文二级标题

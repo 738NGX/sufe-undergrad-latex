@@ -17,7 +17,7 @@
 作者喜欢使用 Markdown 编写论文草稿。写完后直接在模板路径下执行以下命令：
 
 ```sh
-pandoc draft.md -o content.tex --biblatex -f markdown-auto_identifiers
+pandoc draft.md --template=template.tex -o content.tex --biblatex -f markdown-auto_identifiers
 ```
 
 即可自动将正文草稿编译成正文文本。从而免去了手写 latex 的麻烦。
