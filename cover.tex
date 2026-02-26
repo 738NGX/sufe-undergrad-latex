@@ -1,0 +1,74 @@
+% ==========================================
+% 封面与声明页
+% ==========================================
+
+\newgeometry{left=3cm, right=3cm, top=2.5cm, bottom=2.5cm}
+
+\begin{titlepage}
+    \pagestyle{empty} 
+    
+    {
+        \centering
+        \vspace*{0.5cm}
+        {\zihao{-0} 上海财经大学 \par}
+        \vspace{1.5cm}
+        {\zihao{1} 毕\quad 业\quad 论\quad 文 \par}
+        
+        \vspace{2cm}
+
+        % 题目部分：直接调用新定义的 \MYTITLEA
+        {\zihao{2}
+        \begin{tabular}{rc}
+            \makebox[2em][s]{题\hfill 目} & \underline{\makebox[10em][c]{\sffamily \MYTITLEA}} \\
+            & \underline{\makebox[10em][c]{\sffamily \MYTITLEB}} \\
+        \end{tabular}}
+
+        \vspace{3cm}
+
+        % 个人信息栏
+        {\zihao{4}
+        \renewcommand{\arraystretch}{1.8} 
+        \begin{tabular}{lc}
+            \makebox[4em][s]{姓\hfill 名} & \underline{\makebox[10em][c]{\MYNAME}} \\
+            \makebox[4em][s]{学\hfill 号} & \underline{\makebox[10em][c]{\MYID}} \\
+            \makebox[4em][s]{学\hfill 院} & \underline{\makebox[10em][c]{\MYCOLLEGE}} \\
+            \makebox[4em][s]{专\hfill 业} & \underline{\makebox[10em][c]{\MYMAJOR}} \\
+            \makebox[4em][s]{指导教师} & \underline{\makebox[10em][c]{\MYADVISOR}} \\
+        \end{tabular}}
+
+        \vfill
+        {\zihao{4} 定稿日期 \hspace{4em} \MYDATE \par}
+        \vspace{1cm}
+    }
+    
+    \clearpage
+
+    % 声明页
+    \begin{center}
+        \vspace*{0.5cm}
+        {\zihao{1} \bfseries\sffamily 声 \qquad 明 \par}
+    \end{center}
+
+    \vspace{1.5cm}
+
+    \begin{spacing}{1.5} 
+        \zihao{2}\kaishu\bfseries
+        \indent 本人郑重声明所呈交的论文是我个人在指导老师的指导下进行的研究工作及取得的研究成果，不存在任何剽窃、抄袭他人学术成果的现象。本人确保在论文写作中严格遵守学术行为规范，未使用人工智能技术取代论文写作，符合学术诚信要求。
+        
+        \indent 我同意（ $\checkmark$ ）/ 不同意（ \qquad ）本论文作为学校的信息资料使用。
+    \end{spacing}
+
+    \vfill
+
+    \begin{flushright}
+        \zihao{2}\kaishu\bfseries
+        \begin{tabular}{r c}
+            论文作者（签名）： & \underline{\makebox[6em]{}} \\ [1.5cm]
+            & \makebox[6em][s]{年 \hfill 月 \hfill 日} 
+        \end{tabular}
+    \end{flushright}
+    \vspace{1cm}
+
+\end{titlepage}
+
+\restoregeometry
